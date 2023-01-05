@@ -1,6 +1,6 @@
 import com.newhopebootcamps.model.Car
 
-import java.io.{FileNotFoundException, IOException}
+import java.io.{FileNotFoundException, FileReader, IOException}
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -20,6 +20,7 @@ object Main {
     var c:Int = 0;
     try {
       // Any File IO operation.
+      val t = new FileReader("input.txt")
       // Start computing...
       c = x / y
       // other operation.
