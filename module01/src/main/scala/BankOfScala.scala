@@ -34,6 +34,7 @@ object BankOfScala {
     val depositAccountIds = depositAccounts map { account => account(Dollars(10000 + random.nextInt(10000))) }
 
 
+
     /* logging */
     println(s"Deposits Accounts: $depositAccounts")
     println(s"Deposits Account Ids: $depositAccountIds")
