@@ -7,4 +7,6 @@ implicit def doubleToDollars(d: Int): Dollars = Dollars(d)
 
 val customerBalance: Int = 10000
 
+println("---------------------")
 customerBalance prettify
+ // println(customerBalance)
