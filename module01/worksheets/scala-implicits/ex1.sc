@@ -1,5 +1,6 @@
-//def add(a: Int, b:Int) = a + b
-def increament(a: Int) = a + 1
+// won't work, because no marking before a:Int
+def increasment(a: Int) = a + 1
+
 implicit def stringToInt(s: String): Int  = {
 
   try {
@@ -22,5 +23,5 @@ implicit def stringToInt(s: String): Int  = {
 
 
 // add(10, 90)
-increament("10")
+increasment("10")
 

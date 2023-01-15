@@ -1,4 +1,4 @@
-def increament(implicit a: Int) = a + 1
+def increasment(implicit a: Int) = a + 1
 def log(msg: String )=println(msg)
 
 def stringToInt(s: String): Int  = {
@@ -19,6 +19,6 @@ implicit def strToInt: Int = {
 
 
 //call increament function
-val result = increament
+val result = increasment
 
 println("> " + result)
