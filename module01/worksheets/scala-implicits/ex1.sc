@@ -22,6 +22,6 @@ implicit def stringToInt(s: String): Int  = {
 
 
 
-// add(10, 90)
+// won't work
 increasment("10")
 
