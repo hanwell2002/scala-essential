@@ -15,7 +15,7 @@ object Example01_2 {
   }
 
   def speakerOne() {
-    implicit val english = "English"
+    implicit val english2 = "English"
     speaker("Sam")
   }
 
@@ -31,6 +31,8 @@ object Example01_2 {
   def main(args: Array[String]) {
     println("Implicit Demo")
 
+    implicit val whiteHouseDefaultLng= "English US Dialect"
+// Explicit ("Sivasily")  --> implicit param --> default param.
     println("------call speaker ----------")
     speaker("Sarkozy")
 

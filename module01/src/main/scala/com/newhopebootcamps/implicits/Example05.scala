@@ -13,12 +13,21 @@ package com.newhopebootcamps.implicits
  */
 object Example05 extends App {
   implicit class Process(i: Int) {
-    def start: Unit = println("Process is starting")
+    def start: Int = {
+      println("Process is starting")
+
+      println("The other process.")
+      val processId = 5
+      processId
+    }
 
     def stop: Unit = println("Process stopped")
   }
 
   val processId: Int = 5
-  processId.start
+
+  println("ID:" +  processId.start)
   processId.stop
+
 }
+

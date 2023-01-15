@@ -11,10 +11,11 @@ object Example02 extends App{
 
     // Implicit parameter will be passed here
     println(">> With Implicit parameters:")
+
     val result = disp
     println(result)
 
-    // Implicit parameters will not be passed, due to passing a real parameter "GFG"
+    // Implicit parameters will not be passed, due to passing a real parameter "Scala"
     println(">>Without Implicit parameters:")
     val result2 = disp("Scala!")
     println(result2)
