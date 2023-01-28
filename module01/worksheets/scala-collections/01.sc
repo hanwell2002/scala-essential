@@ -8,11 +8,16 @@ val priceCoffeeByDay: Map[String, Double] = Map(
   "Saturday" -> 5.87
 )
 
+//val keys = priceCoffeeByDay.keys
+//val values = priceCoffeeByDay.values
+
 val totalSpentOnCoffeeUsingSum = priceCoffeeByDay.values.sum
 val minSpentOnCoffeeUsingMin = priceCoffeeByDay.values.min
 
-val totalSpentOnCoffeeUsingReduce = priceCoffeeByDay.values.reduce((a, b) => a + b)
+val totalSpentOnCoffeeUsingReduce = priceCoffeeByDay.values.reduce((a, b) => a + b  )
 
 val totalSpentOnCoffeeUsingReduceOther = priceCoffeeByDay.values.reduce(_ + _)
 
 val minSpentOnCoffeeUsingReduce = priceCoffeeByDay.values.reduce(_ min _)
+
+

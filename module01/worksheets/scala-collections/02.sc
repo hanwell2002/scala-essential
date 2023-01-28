@@ -11,8 +11,10 @@ val priceCoffeeByDay: Map[String, Double] = Map(
 val totalSpent = priceCoffeeByDay.values.sum
 // show how sum is implemented.
 
-
 val numbers = List(2.39, 3.54, 4.50, 3.21)
+numbers.head   //= 2.38
+numbers.tail   //
+
 /* foldLeft examples */
 val sumL: Double = numbers.foldLeft(0.0)((b, a) => b + a)
 val minimumL: Double = numbers.foldLeft(numbers.head)((b, a) => b min a)

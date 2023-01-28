@@ -1,6 +1,6 @@
 import java.util.UUID
 
-trait Db {
+sealed trait Db {
   private var contents: Map[String, String] = Map.empty
 
   protected def save(key: String, value: String): Unit = contents += (key -> value)
@@ -8,6 +8,7 @@ trait Db {
   def get(key: String): Option[String] = contents.get(key)
 }
 
+trait OracleDb extends Db {}
 
 class Account(userId: String, accountId: String)
 
