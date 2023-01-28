@@ -1,10 +1,28 @@
 package com.newhopebootcamps.oop
 
-class Employee(val first: String, var last: String) {
+class Employee(var first: String, val last: String) {
   override def toString: String = first + " " + last
 }
 
+
 object Runner extends App {
+  val bobmartin = new Employee("Bob", "Martin")
+
+
+  bobmartin.first
+  bobmartin.last
+
+  bobmartin.first = "Jock"
+
+  //not changable
+ // bobmartin.last = "Swift";
+
+
+  println(bobmartin)
+}
+
+
+/*object Runner extends App {
 
   val bobMartin = new Employee("Bob", "Martin")
   bobMartin
@@ -16,7 +34,7 @@ object Runner extends App {
 
   println(fn)
 
-}
+}*/
 
 /*
 class Color(val value: String) // public val field

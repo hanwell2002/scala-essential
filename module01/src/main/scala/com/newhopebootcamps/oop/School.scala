@@ -4,10 +4,15 @@ package com.newhopebootcamps.oop
 /* Super class Person */
 class Person //base class, Student's parent class
 {
+  val first = "Adam"
+  private val salary = 100000;
   def message() {
     println("This is person class");
   }
 
+  def getSalary(): Unit = {
+    salary
+  }
 }
 
 /* Subclass Student */
@@ -23,6 +28,12 @@ class Student extends Person {
 
     // will invoke or call parent class message() method
     super.message
+  }
+
+  def showName(): Unit = {
+    println(first)
+
+    println(getSalary)
   }
 }
 

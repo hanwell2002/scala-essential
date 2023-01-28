@@ -24,4 +24,9 @@ class Employee(f: String, l: String, s: Int) {
 }
 
 val bobMartin = new Employee("Bob", "Martin", 10)
+
 bobMartin.getDepartmentName("R&D")
+
+val amyMartin = new Employee("Amy", "Martin", 10)
+
+

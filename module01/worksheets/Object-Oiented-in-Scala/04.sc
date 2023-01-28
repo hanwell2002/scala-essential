@@ -11,7 +11,7 @@ bobMartin.last
 class Color(val value: String) // public val field
 val c = new Color("red")
 c.value
-
+//c.value = "Green"
 class Shape(var value: String) // public var field
 val s = new Shape("circle")
 s.value
