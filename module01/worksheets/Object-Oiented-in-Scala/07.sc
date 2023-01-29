@@ -5,3 +5,6 @@ object MyApplication {
   }
 }
 MyApplication.main(Array("hello", "world!"))
+
+
+var arr = Array("hello", "world!")

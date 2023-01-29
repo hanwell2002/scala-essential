@@ -25,9 +25,12 @@ class Employee(f: String, l: String, s: Int) {
 
   def awardMoreStocks(numberOfStocks: Int): Unit = stocks += numberOfStocks
 
+
   override def toString: String = first + " " + last + " " + stocks
 }
 
-val bobMartin = Employee("Bob", "Martin", 10)
-bobMartin.getLast
+//val bobMartin = Employee("Bob", "Martin", 10)
+//bobMartin.getLast
+
 Employee.getDepartmentName("R&D")
+

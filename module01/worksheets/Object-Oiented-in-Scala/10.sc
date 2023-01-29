@@ -40,11 +40,11 @@ abstract class Company {
   val employees: Set[Employee]
 }
 
-class PluralSight(n: String, es: Set[Employee]) extends Company {
+class IBM(n: String, es: Set[Employee]) extends Company {
   val name = n
   val numberOfEmployees = es.size
   val employees = es
 }
 
-val pluralSight = new PluralSight("PluralSight Inc", Set(rnDEmployee, marketingEmployee))
-pluralSight.numberOfEmployees
+val ibm = new IBM("PluralSight Inc", Set(rnDEmployee, marketingEmployee))
+ibm.numberOfEmployees

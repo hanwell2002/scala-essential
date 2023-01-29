@@ -19,6 +19,7 @@ class Employee(f: String, l: String, s: Int) {
   def awardMoreStocks(numberOfStocks: Int): Unit = stocks += numberOfStocks
 
   def getDepartmentName(code: String): String = departmentCodeByName.getOrElse(code, "The department with such code does not exist")
+  static def getDepartmentName(code: String): String = departmentCodeByName.getOrElse(code, "The department with such code does not exist")
 
   override def toString: String = first + " " + last + " " + stocks
 }
