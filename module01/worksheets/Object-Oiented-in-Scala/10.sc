@@ -46,5 +46,5 @@ class IBM(n: String, es: Set[Employee]) extends Company {
   val employees = es
 }
 
-val ibm = new IBM("PluralSight Inc", Set(rnDEmployee, marketingEmployee))
+val ibm = new IBM("IBM Corp.", Set(rnDEmployee, marketingEmployee))
 ibm.numberOfEmployees
