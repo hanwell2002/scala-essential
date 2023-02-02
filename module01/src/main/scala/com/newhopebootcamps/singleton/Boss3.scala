@@ -6,6 +6,7 @@ class Boss3 (name: String) {
 
 
   def superToString = super.toString
+  override def toString: String  =  "Boss Name is $name"
 }
 
 
@@ -20,6 +21,7 @@ object BossBoss extends App {
 
 
   println(mboss1.superToString) //5dfcfece
+  println(mboss1.toString) //5dfcfece
   println(mboss2.superToString) //5dfcfece
 
 
