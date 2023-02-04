@@ -10,11 +10,13 @@ case class Part(ITEM: String, MANUFACTURER: String, MODEL: String, COST: Double)
 object Main {
   def main(args: Array[String]): Unit = {
     println(" *** XML Parser example!! *** ")
-    xmlparser()
+    // xmlparser()
+    traverse
+    println("")
   }
 
   def xmlparser(): Unit = {
-
+      val XML2 = "ABC"
     val currentDirectory = new java.io.File(".").getCanonicalPath
     println("Current Path: " + currentDirectory)
 
@@ -54,8 +56,8 @@ object Main {
     // costs.foreach(item=>println(item.text))
 
     println(s"Cost = $costs")
-    import scala.collection._
-    val name_price_map = (names zip prices) //(breakOut): Map[A, B]
+    //import scala.collection._
+    val name_price_map = names zip prices //(breakOut): Map[A, B]
     println(name_price_map)
 
 
@@ -72,7 +74,7 @@ object Main {
     for (pair <- name_price_map)
       println(s"${pair._1} : ${pair._2}")
     println("--------------------------------------------------------------------")
-
+//also case pattern match
     for ((key, value) <- name_price_map)
       println(s"$key : $value")
     println("--------------------------------------------------------------------")
@@ -83,6 +85,33 @@ object Main {
 
     println(itms)
     println(jiage)
+
+
+  }
+
+  def traverse: Unit = {
+
+    val xml = XML.loadFile("C:/var/data/data/Posts.xml")
+
+    val partList = xml \ "PART" map { node =>
+      Part((node \ "ITEM").text, (node \ "MANUFACTURER").text, (node \ "MODEL").text, (node \ "COST").text.toDouble)
+    }
+
+    println(partList)
+
+    partList.foreach {
+      part =>
+        println("---------")
+        println(part.ITEM)
+        println(part.MODEL)
+        println(part.COST)
+    }
+
+    println("sth")
+
+    println(100 / 0)
+
+    println("sth")
 
 
   }
@@ -102,4 +131,7 @@ object Main {
       </Name>
     """
   }
+
+
+
 }
