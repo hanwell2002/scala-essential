@@ -1,6 +1,6 @@
 <configuration>
     <Properties>
-        <Property name="filename" value="/var/log/module01.log"/>
+        <Property name="filename" value="/var/log/scala-bootcamps.log"/>
         <Property name="msg_pattern">%d{HH:mm:ss.SSS} TKD [%thread] %-5level %logger{36} - %msg%n</Property>
     </Properties>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
