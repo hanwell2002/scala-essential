@@ -1,0 +1,67 @@
+<configuration>
+    <Properties>
+        <Property name="filename" value="/var/log/module01.log"/>
+        <Property name="msg_pattern">%d{HH:mm:ss.SSS} TKD [%thread] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- deny DEBUG level
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>DENY</onMatch>
+        </filter>-->
+        <!-- deny ERROR level -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+        <!-- deny WARN level -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+        <target>System.out</target>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <charset>utf-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} ::: [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>c:/var/log/module01.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} TKD [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="stderr" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- deny all events with a level below WARN, that is INFO, DEBUG and TRACE -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <target>System.err</target>
+        <immediateFlush>true</immediateFlush>
+        <encoder>
+            <charset>utf-8</charset>
+            <!--<pattern>${msg_pattern}</pattern> -->
+            <pattern>%d{HH:mm:ss.SSS} ALERT: [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <root level="debug">
+        <appender-ref ref="FILE"/>
+    </root>
+    <!--<root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </root>-->
+    <root level="TRACE">
+        <appender-ref ref="stdout"/>
+    </root>
+    <root level="WARN">
+        <appender-ref ref="stderr"/>
+    </root>
+</configuration>
