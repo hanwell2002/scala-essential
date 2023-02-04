@@ -12,17 +12,21 @@ object Main {
     println(" *** XML Parser example!! *** ")
     // xmlparser()
     traverse
+    loadXmlFromString
     println("")
   }
 
+
+  //example-1
   def xmlparser(): Unit = {
-      val XML2 = "ABC"
     val currentDirectory = new java.io.File(".").getCanonicalPath
+
     println("Current Path: " + currentDirectory)
 
     // val xmlDoc = XML.loadFile("data/Posts.xml")
     // val xml = XML.loadFile("C:\\var\\data\\data\\Posts.xml")
     val xmlDoc = XML.loadFile("C:/var/data/data/Posts.xml")
+    //val xmlDoc = XML.loadFile("/opt/appname/data/Posts.xml")
 
     /**
      * Let’s have a look at how we can decipher it. XPath is a strong tool for querying the contents of an XML file.
@@ -52,8 +56,8 @@ object Main {
     val prices = for (f <- costs) yield f.text.toDouble
     println(prices)
 
-    // items.foreach(item=>println(item.text))
-    // costs.foreach(item=>println(item.text))
+    // items.foreach(country=>println(country.text))
+    // costs.foreach(country=>println(country.text))
 
     println(s"Cost = $costs")
     //import scala.collection._
@@ -74,7 +78,7 @@ object Main {
     for (pair <- name_price_map)
       println(s"${pair._1} : ${pair._2}")
     println("--------------------------------------------------------------------")
-//also case pattern match
+    //also case pattern match
     for ((key, value) <- name_price_map)
       println(s"$key : $value")
     println("--------------------------------------------------------------------")
@@ -89,6 +93,8 @@ object Main {
 
   }
 
+
+  // Example-2
   def traverse: Unit = {
 
     val xml = XML.loadFile("C:/var/data/data/Posts.xml")
@@ -108,30 +114,64 @@ object Main {
     }
 
     println("sth")
-
-    println(100 / 0)
-
+    //exception example
+    //  println(100 / 0)
     println("sth")
-
-
   }
 
 
-  def tbd(): Unit = {
-    val Details =
+  // Example - 3
+  def loadXmlFromString(): Unit = {
+    val xmlCountries =
       """
-      <Name>
-        <Add>
-          <title>This is the add detail</title>
-          <item>
-            <title>Here is the add</title>
-            <add hno="5" lane="xyz" city="abc" country="India" code="29" />
-          </item>
-        </Add>
-      </Name>
+      <Countries>
+        <Continent>
+          <title>America</title>
+          <country>
+            <title>Brazil</title>
+            <info region="South America" population="170115000" city="Brasília" country="Brazil" code="BRA" />
+          </country>
+          <country>
+          <title>United States</title>
+            <info region="North America" population="278357000" city="Washington" country="USA" code="USA" />
+        </country>
+        </Continent>
+        <Continent>
+         <title>Asia</title>
+         <country>
+           <title>Prathet Thai</title>
+           <info region="Southeast Asia" population="61399000" city="Bangkok" country="Thailand" code="THA" />
+         </country>
+         <country>
+           <title>People's republic of China</title>
+           <info region="Eastern Asia" population="1277558000" city="Beijing" country="China" code="CHN" />
+       </country>
+       </Continent>
+      </Countries>
     """
-  }
 
+    // Load xml from a string
+    val xml = scala.xml.XML.loadString(xmlCountries)
+    val titles = xml \ "Continent" \ "country"
+    // println(titles)
+
+    titles.foreach {
+      c =>
+        println("Title: " + c.text)
+    }
+
+    val info = xml \ "Continent" \ "country" \ "info"
+    println(info)
+
+    info.foreach {
+      a =>
+        val population = a \@ "population"
+        val code = a \@ "code"
+        println(s"code = ${code}, ${population.toInt}")
+
+    }
+
+  }
 
 
 }
