@@ -96,11 +96,21 @@ object Main {
 
   // Example-2
   def traverse: Unit = {
+
     val xml = XML.loadFile("C:/var/data/data/Posts.xml")
 
     val partList: List[Part] = (xml \ "PART" map { node =>
       Part((node \ "ITEM").text, (node \ "MANUFACTURER").text, (node \ "MODEL").text, (node \ "COST").text.toDouble)
     }).toList
+    // println(partList)
+
+    /*    partList.foreach {
+          part =>
+            println("---------")
+            println(part.ITEM)
+            println(part.MODEL)
+            println(part.COST)
+        }*/
 
     val filePath = "C:/var/output/part-csv-writer3.csv"
     val csvWriter = CSVWriter.open(new FileWriter(filePath))
@@ -117,7 +127,24 @@ object Main {
     for (e <- parts) {
       records :+= List(e.ITEM, e.MODEL, e.MODEL, String.format("%.2f", e.COST))
     }
+    // you can convert Double to String by :  String.format("%.2f", e.COST) or simply ""+12.34
 
+    /*
+    parts.foreach{
+      e=>
+      records :+= List(e.ITEM, e.MODEL, e.MODEL, "" + e.COST)
+    }
+   */
+
+    /*
+        val it = parts.iterator
+        while (it.hasNext) {
+          val e = it.next
+          records :+= List(e.ITEM, e.MODEL, e.MODEL, "" + e.COST)
+        }
+    */
+
+    // returns a List[List[String]]
     records
   }
 
@@ -153,6 +180,10 @@ object Main {
 
     // Load xml from a string
     val xml = scala.xml.XML.loadString(xmlCountries)
+
+    val children = xml \ "symbol"
+    //     println(children)
+
     val titles = xml \ "Continent" \ "country"
     println(titles)
 
