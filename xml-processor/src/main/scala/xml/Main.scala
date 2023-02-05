@@ -181,9 +181,6 @@ object Main {
     // Load xml from a string
     val xml = scala.xml.XML.loadString(xmlCountries)
 
-    val children = xml \ "symbol"
-    //     println(children)
-
     val titles = xml \ "Continent" \ "country"
     println(titles)
 
