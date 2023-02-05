@@ -1,6 +1,8 @@
 package xml
 
 import scala.xml.XML
+import com.github.tototoshi.csv._
+import java.io.FileWriter
 
 case class Part(ITEM: String, MANUFACTURER: String, MODEL: String, COST: Double)
 //val xml = scala.xml.XML.loadString(<your xml as string>)
@@ -89,36 +91,35 @@ object Main {
 
     println(itms)
     println(jiage)
-
-
   }
 
 
   // Example-2
   def traverse: Unit = {
-
     val xml = XML.loadFile("C:/var/data/data/Posts.xml")
 
-    val partList = xml \ "PART" map { node =>
+    val partList: List[Part] = (xml \ "PART" map { node =>
       Part((node \ "ITEM").text, (node \ "MANUFACTURER").text, (node \ "MODEL").text, (node \ "COST").text.toDouble)
-    }
+    }).toList
 
-    println(partList)
+    val filePath = "C:/var/output/part-csv-writer3.csv"
+    val csvWriter = CSVWriter.open(new FileWriter(filePath))
+    csvWriter.writeAll(toStringList(partList))
 
-    partList.foreach {
-      part =>
-        println("---------")
-        println(part.ITEM)
-        println(part.MODEL)
-        println(part.COST)
-    }
-
-    println("sth")
-    //exception example
-    //  println(100 / 0)
-    println("sth")
+    println("-- Processing finished successfully. --")
   }
 
+  private def toStringList(parts: List[Part]) = {
+    var records: List[List[String]] = List.empty
+    // adding header record
+    records :+= List("ITEM", "MANUFACTURER", "MODEL", "COST")
+    // adding all part one by one
+    for (e <- parts) {
+      records :+= List(e.ITEM, e.MODEL, e.MODEL, String.format("%.2f", e.COST))
+    }
+
+    records
+  }
 
   // Example - 3
   def loadXmlFromString(): Unit = {
@@ -150,14 +151,10 @@ object Main {
       </Countries>
     """
 
-      // Load xml from a string
+    // Load xml from a string
     val xml = scala.xml.XML.loadString(xmlCountries)
-
-    val children = xml \ "symbol"
-    println(children)
-
     val titles = xml \ "Continent" \ "country"
-    // println(titles)
+    println(titles)
 
     titles.foreach {
       c =>
@@ -172,7 +169,6 @@ object Main {
         val population = a \@ "population"
         val code = a \@ "code"
         println(s"code = ${code}, ${population.toInt}")
-
     }
 
   }
