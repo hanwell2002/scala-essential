@@ -4,3 +4,9 @@ exec scala -classpath ".;.\scala-csv_2.13-1.3.10.jar;.\scala-xml_2.13-2.1.0.jar;
 !#\                                           
 
 scala -classpath "*.jar" xml.Main
+
+
+
+Reference:
+
+https://aperiodic.net/phil/scala/s-99/
